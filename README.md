@@ -56,8 +56,8 @@ The core problem this agent addresses is the difficulty users and protocols face
 **2. Clone the Repository (if applicable):**
 
    ```bash
-   # git clone https://github.com/Hamhunter23/verifi-data-agent.git
-   # cd verify-data-agent
+   git clone https://github.com/Hamhunter23/verifi-data-agent.git
+   cd verify-data-agent
    ```
 
 **3. Create and Configure Environment Variables:**
