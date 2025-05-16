@@ -56,8 +56,8 @@ The core problem this agent addresses is the difficulty users and protocols face
 **2. Clone the Repository (if applicable):**
 
    ```bash
-   # git clone <your-repo-url>
-   # cd <your-repo-directory>
+   # git clone https://github.com/Hamhunter23/verifi-data-agent.git
+   # cd verify-data-agent
    ```
 
 **3. Create and Configure Environment Variables:**
@@ -179,17 +179,6 @@ When running `demo_client.py`:
 *   **Query:** "Fetch crypto_price for fetch-ai vs_currency=gbp"
 *   **Query:** "current price of solana in usd"
 
-## Important Note on CrewAI and ASI1 LLM
-
-*   **This Project & CrewAI:** The `VerifiableDataAgent` as implemented here is a standalone uAgent and does **not** use the CrewAI framework. CrewAI is a separate tool for orchestrating multiple collaborating agents. If your hackathon goal involves CrewAI, you would typically design your agents and their tasks within the CrewAI structure, potentially using an agent like this one as a specialized "tool" within a CrewAI setup.
-*   **ASI1 LLM:** This refers to Fetch.ai's Web3-native LLM. For the demo, `demo_client.py` simulates a user interacting via an ASI1-mini like interface. The `VerifiableDataAgent` itself uses Google Gemini for its NLU. The overall system is designed to be compatible with an ASI1-mini front-end.
-
-## Exposed Protocols on Agentverse (by `VerifiableDataAgent`)
-
-*   `VerifiableDataChatProtocol` (version 1.2): For chat interactions.
-*   `VerifiableDataQuotaProtocol` (version 0.1.0): Rate limiting for direct requests.
-*   `VerifiableDataHealthProtocol` (version 0.1.0): For agent health checks.
-
 ## Troubleshooting
 
 *   **Check Logs**: Both `main_agent.py` and `demo_client.py` print logs.
@@ -197,31 +186,6 @@ When running `demo_client.py`:
 *   **Agent Address**: Ensure you provide the correct address of the running `VerifiableDataAgent` to `demo_client.py`.
 *   **Network Issues**: Verify connectivity to CoinGecko and Google APIs.
 *   **Dependencies**: `pip install -r requirements.txt` in your virtual environment.
-
-<use_cases>
-    <use_case>Query real-time cryptocurrency prices (e.g., "What is the current price of Ethereum in Euros?").</use_case>
-    <use_case>Future extension: Fetch educational credentials for a user (e.g., "Show me User X's degree from Fetch University").</use_case>
-    <use_case>Future extension: Retrieve reputation scores for a project (e.g., "What is the reputation of Project Y on the Decentralized Trust Platform?").</use_case>
-    <use_case>Future extension: Get environmental impact data for a product (e.g., "What is the carbon footprint of Eco-Widget?)"</use_case>
-</use_cases>
-
-<payload_requirements>
-  <description>When interacting via chat (e.g., through ASI1-mini), you can use natural language. The agent will use Gemini to parse the following from your query:</description>
-  <payload>
-    <requirement>
-        <parameter>data_type</parameter>
-        <description>The type of data you are looking for. Currently supported: `crypto_price`. Examples for future extension: `education_credential`, `reputation_score`, `environmental_impact`, `supply_chain_status`.</description>
-    </requirement>
-    <requirement>
-        <parameter>identifier</parameter>
-        <description>The specific item you are asking about. For `crypto_price`, this is the coin ID (e.g., `bitcoin`, `ethereum`, `fetch-ai`).</description>
-    </requirement>
-    <requirement>
-        <parameter>query_details (optional)</parameter>
-        <description>Any additional specifics. For `crypto_price`, you can specify the comparison currency like `vs_currency=eur` or `vs_currency=gbp` (defaults to `usd`). Example: "What is the price of solana in gbp?"</description>
-    </requirement>
-  </payload>
-</payload_requirements>
 
 **Example Chat Queries (for ASI1-mini):**
 
