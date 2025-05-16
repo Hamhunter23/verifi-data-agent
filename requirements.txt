@@ -1,0 +1,4 @@
+uagents==0.22.3
+httpx>=0.20.0,<0.28.0
+google-genai>=0.4.0,<0.8.0
+python-dotenv>=0.10.0,<2.0.0 
